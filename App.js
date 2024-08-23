@@ -9,6 +9,8 @@ import History from './Screens/History';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
+  const API = 'https://api.openweathermap.org/data/2.5/'
+  const appID = '&appid=10692b614cde4a27abc3caf08c696dfa&units=metric'
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -26,13 +28,13 @@ export default function App() {
             title:'',
             headerBackTitle:'Back'
         }}>
-          {props => <Result {...props} />}
+          {props => <Result {...props} api={API} appId={appID}/>}
         </Stack.Screen>
         <Stack.Screen name="History" options={{
             title:'',
             headerBackTitle:'Back'
         }}>
-          {props => <History {...props} />}
+          {props => <History {...props} api={API} appId={appID}/>}
         </Stack.Screen>
 
       </Stack.Navigator>

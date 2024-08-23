@@ -1,9 +1,21 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image, TextInput } from 'react-native';
-import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View, Image, TextInput, Keyboard } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
+import PropTypes from 'prop-types';
 
 export default function Home() {
     const navigation = useNavigation();
+    const [inputValue, setInputValue] = useState('');
+
+    const handleClickGo = () => {
+        if (inputValue.trim()) {
+            Keyboard.dismiss();
+            navigation.navigate('Result', { inputValue });
+        } else {
+            alert('Please enter a valid input');
+        }
+    };
 
     return (
         <View style={styles.container}>
@@ -14,30 +26,64 @@ export default function Home() {
                 style={styles.background}
             />
             <View style={styles.center}>
-                <View>
-                    <Image source={require("../assets/Logo.png")} style={{ width: 300, resizeMode: 'contain' }} />
-                </View>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        style={[styles.textInput,styles.elevation]}
-                        placeholder="Miestas"
-                        maxLength={20}
-                    />
-                    <TouchableOpacity style={[styles.button,styles.elevation]}>
-                        <Text style={styles.btnText}>GO!</Text>
-                    </TouchableOpacity>
-                </View>
-                {/* <TouchableOpacity onPress={() => navigation.navigate('Result')}>
-                    <Text>Go to result</Text>
-                </TouchableOpacity> */}
+                <Logo width={300} />
+                <InputSection 
+                    inputValue={inputValue} 
+                    setInputValue={setInputValue} 
+                    onPressGo={handleClickGo} 
+                />
             </View>
-
-            <TouchableOpacity style={[styles.button,{width:'60%'},styles.elevation]} onPress={() => navigation.navigate('History')}>
-                <Text style={styles.btnText}>History</Text>
-            </TouchableOpacity>
+            <CustomButton 
+                title="History" 
+                onPress={() => navigation.navigate('History')} 
+                style={{ width: '60%' }} 
+            />
         </View>
     );
 }
+
+function InputSection({ inputValue, setInputValue, onPressGo }) {
+    return (
+        <View style={styles.inputContainer}>
+            <TextInput
+                style={[styles.textInput, styles.elevation]}
+                placeholder="Miestas"
+                maxLength={20}
+                value={inputValue}
+                onChangeText={setInputValue}
+            />
+            <CustomButton 
+                title="GO!" 
+                onPress={onPressGo} 
+                style={styles.button} 
+            />
+        </View>
+    );
+}
+
+function Logo({ width }) {
+    return <Image source={require("../assets/Logo.png")} style={{ width, resizeMode: 'contain' }} />;
+}
+
+function CustomButton({ title, onPress, style }) {
+    return (
+        <TouchableOpacity style={[styles.button, style, styles.elevation]} onPress={onPress}>
+            <Text style={styles.btnText}>{title}</Text>
+        </TouchableOpacity>
+    );
+}
+
+InputSection.propTypes = {
+    inputValue: PropTypes.string.isRequired,
+    setInputValue: PropTypes.func.isRequired,
+    onPressGo: PropTypes.func.isRequired,
+};
+
+CustomButton.propTypes = {
+    title: PropTypes.string.isRequired,
+    onPress: PropTypes.func.isRequired,
+    style: PropTypes.object,
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -47,10 +93,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'space-between',
-        // backgroundColor:'#daf5cb'
     },
     button: {
-        // width: '60%',
         borderWidth: 3,
         borderColor: '#fff',
         backgroundColor: '#96c93d',
@@ -74,23 +118,23 @@ const styles = StyleSheet.create({
     center: {
         flex: 1,
         justifyContent: 'center',
-        marginTop:-50
+        marginTop: -50
     },
     textInput: {
         backgroundColor: '#fff',
         padding: 10,
-        borderRadius:5,
-        width:'70%'
+        paddingLeft: 20,
+        borderRadius: 10,
+        width: '75%'
     },
-    inputContainer:{
-        paddingHorizontal:20,
-        flexDirection:'row',
-        justifyContent:'space-between',
+    inputContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     elevation: {
         shadowOpacity: 0.1,
         shadowRadius: 5,
         elevation: 25,
         shadowColor: '#000',
-      },
+    },
 });
