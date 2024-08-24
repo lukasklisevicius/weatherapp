@@ -1,16 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+// import screens
 import Home from './Screens/Home';
 import Result from './Screens/Result';
 import History from './Screens/History';
 
 export default function App() {
+  // create stacknavigator
   const Stack = createNativeStackNavigator();
+  // define api
   const API = 'https://api.openweathermap.org/data/2.5/'
   const appID = '&appid=10692b614cde4a27abc3caf08c696dfa&units=metric'
+  // setup render navigator and screens
   return (
     <NavigationContainer>
       <Stack.Navigator

@@ -1,9 +1,10 @@
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import React from 'react';
 
-export default function ConditionIcon({ iconName }) {
+export default function ConditionIcon({ iconName }) { // props - icon name
+    // image api
     const iconUrl = `https://openweathermap.org/img/wn/${iconName}@2x.png`;
-
+// return image
     return (
             <Image 
                 source={{ uri: iconUrl }} 
@@ -12,7 +13,7 @@ export default function ConditionIcon({ iconName }) {
             />
     );
 }
-
+//  icon styles
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -23,11 +24,5 @@ const styles = StyleSheet.create({
     icon: {
         width: 30,
         height: 30,  
-    },
-    elevation: {
-        shadowOpacity: 0.2,
-        shadowRadius: 5,
-        elevation: 20,
-        shadowColor: '#000',
     },
 });
