@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image, TextInput, Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { LinearGradient } from 'expo-linear-gradient';
 import PropTypes from 'prop-types';
 
 export default function Home() {
@@ -19,12 +18,6 @@ export default function Home() {
 
     return (
         <View style={styles.container}>
-            <LinearGradient
-                colors={['#96c93d', '#96c93d85', '#96c93d85', '#96c93d01', '#96c93d01', '#96c93d01']}
-                start={[0, 0]}
-                end={[1, 1.5]}
-                style={styles.background}
-            />
             <View style={styles.center}>
                 <Logo width={300} />
                 <InputSection 
@@ -90,12 +83,12 @@ const styles = StyleSheet.create({
         paddingVertical: 50,
         padding: 20,
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#00000035',
         alignItems: 'center',
         justifyContent: 'space-between',
     },
     button: {
-        borderWidth: 3,
+        borderWidth: 1,
         borderColor: '#fff',
         backgroundColor: '#96c93d',
         borderRadius: 10,
@@ -134,7 +127,7 @@ const styles = StyleSheet.create({
     elevation: {
         shadowOpacity: 0.1,
         shadowRadius: 5,
-        elevation: 25,
+        elevation: 5,
         shadowColor: '#000',
     },
 });

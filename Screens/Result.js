@@ -2,10 +2,11 @@ import { StyleSheet, Text, View, ActivityIndicator, Alert } from 'react-native';
 import React, { useState, useEffect } from 'react';
 // Todo save to history
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Card from '../components/Card';
 
-export default function Result({ api,appId,route }) {
+export default function Result({ api, appId, route }) {
     const { inputValue } = route.params;
-    
+
     const [weatherData, setWeatherData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -37,7 +38,7 @@ export default function Result({ api,appId,route }) {
     if (loading) {
         return (
             <View style={styles.container}>
-                <ActivityIndicator size="large" color="#0000ff" />
+                <ActivityIndicator size="large" color="#fff" />
             </View>
         );
     }
@@ -52,19 +53,20 @@ export default function Result({ api,appId,route }) {
 
     return (
         <View style={styles.container}>
-            <Text >Weather for {weatherData?.name}</Text>
-            <Text>Temperature: {weatherData?.main?.temp}°C</Text>
-            <Text>Condition: {weatherData?.weather[0]?.description}</Text>
+            <Card weatherData={weatherData} />
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
+        paddingVertical: 50,
+        padding: 20,
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#00000035',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent:'center'
     },
+    
 
 });
