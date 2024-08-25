@@ -11,8 +11,6 @@ React Native application that allows users to check the current weather conditio
 ## Run the app 
 To run this app on web [Live Preview](https://lukasklisevicius.github.io/weatherapp/)
 
-<a href="https://lukasklisevicius.github.io/weatherapp/" target="popup" onclick="window.open('https://lukasklisevicius.github.io/weatherapp/','name','width=600,height=400')">Open page in new window</a>
-
 ## Installation
 to run this app locally, follow these steps:
 1. Clone the repository
