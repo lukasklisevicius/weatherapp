@@ -14,19 +14,34 @@ export default function App() {
   const API = 'https://api.openweathermap.org/data/2.5/'
   const appID = '&appid=10692b614cde4a27abc3caf08c696dfa&units=metric'
 
-
   const resizeWindow = () => {
-    if (Platform.OS === 'web') {
-      window.close()
-      window.open('https://lukasklisevicius.github.io/weatherapp/', '_blank', 'width=450,height=950');
-    } else {
-      alert("This feature is only available in the web environment.");
+    // Check if the current URL already has the resized query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const isResized = urlParams.get('resized');
+  
+    if (!isResized) {
+      // Append the query parameter to the URL
+      urlParams.set('resized', 'true');
+      const newUrl = window.location.pathname + '?' + urlParams.toString();
+      
+      // Open the new window with the resized dimensions
+      const newWindow = window.open(newUrl, '_blank', 'width=450,height=950');
+  
+      // Close the original window after the new one opens
+      if (newWindow) {
+        window.close();
+      }
     }
   };
-
+  
   useEffect(() => {
-    resizeWindow()
-}, []);
+    if (Platform.OS === 'web') {
+      // Check if the window is already resized
+      if (window.innerWidth !== 450 || window.innerHeight !== 950) {
+        resizeWindow();
+      }
+    }
+  }, []);
   // setup render navigator and screens
   return (
     <NavigationContainer>
