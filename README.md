@@ -9,7 +9,7 @@ React Native application that allows users to check the current weather conditio
 * Search History. Stores the last 5 searched cities, allowing users revisit recent searches.
 
 ## Run the app 
-To run this app on web [Live Preview](https://lukasklisevicius.github.io/weatherapp/)
+To run this app on <b>Web</b> cmd/ctrl + [Live Preview](https://lukasklisevicius.github.io/weatherapp/)
 
 ## Installation
 to run this app locally, follow these steps:
