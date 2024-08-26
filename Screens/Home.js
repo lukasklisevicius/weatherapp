@@ -61,7 +61,7 @@ export default function Home() {
                     {/* display text input */}
                     <TextInput
                         style={[styles.textInput, styles.elevation]}
-                        placeholder="Miestas"
+                        placeholder="Enter city name"
                         maxLength={20}
                         value={inputValue}
                         onChangeText={setInputValue}
