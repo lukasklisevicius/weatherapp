@@ -54,7 +54,7 @@ export default function App() {
           title: "Home",
           headerShown:false
         }}>
-          {props => <Home {...props} />}
+          {props => <Home {...props} api={API} appId={appID}/>}
         </Stack.Screen>
         <Stack.Screen name="Result" options={{
             title:'',

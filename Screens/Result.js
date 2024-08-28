@@ -19,8 +19,6 @@ export default function Result({ api, appId, route }) {
             if (response.ok) { //if response ok
                 setWeatherData(data); //set weather data
                 setLoading(false); //change loading state
-                console.log(data)
-                console.log(data.id)
                 savetoHistory(data.id) //save location id to local storage history
             } else {
                 setError(data.message || 'Error fetching data'); // set err msg
