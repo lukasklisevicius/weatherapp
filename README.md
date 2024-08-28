@@ -5,11 +5,11 @@ React Native application that allows users to check the current weather conditio
 
 ## Features
 * City search.
-* Current weather information. Fearches and displays the current temperature, weather description, weather icon, based on the city name entered by user.
+* Current weather information. Fetches and displays the current temperature, weather description, weather icon, based on the city name entered by user.
 * Search History. Stores the last 5 searched cities, allowing users revisit recent searches.
 
 ## Run the app 
-To run this app on web [Live Preview](https://lukasklisevicius.github.io/weatherapp/)
+To run this app on <b>Web</b> cmd/ctrl + [Live Preview](https://lukasklisevicius.github.io/weatherapp/)
 
 ## Installation
 to run this app locally, follow these steps:
@@ -26,7 +26,7 @@ to run this app locally, follow these steps:
    ```
    npm start
    ```
-   ! scan qr code with your phone, or choose from menu
+   ! scan qr code with your phone, or choose from menu to display on web, iOS, or Android
 
 ## Screens
 <table>
